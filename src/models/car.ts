@@ -17,10 +17,9 @@ export type BrandType = {
     modelIds: string[];
 };
 
-// سال‌های تولید و آپشن‌های هر مدل
 export type ProductionYearsType = Record<
-    string, // مدلId
-    Record<number, string[]> // سال تولید => آرایه آپشن‌ها (idهای options)
+    string,
+    Record<string, string[]>
 >;
 
 export type normalizedFilterData = {

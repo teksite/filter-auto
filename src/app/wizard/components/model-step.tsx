@@ -1,31 +1,30 @@
 "use client";
 
-import {ModelType} from "@/models";
-import {mockNormalizedFilter} from "@/mock/mock-normalized-data";
+import { BrandType, ModelType } from "@/models";
 import SelectableList from "@/app/wizard/components/card-list";
+import { getModelsByBrandId } from "@/libs/utils";
 
-type Brand = typeof mockNormalizedFilter.brands[string];
-type Model = typeof mockNormalizedFilter.models[string];
-
-type ModelStepProps = {
-    selectedBrand: Brand;
-    selectedModel: Model | null;
+type Props = {
+    selectedBrand: BrandType | null;
+    selectedModel: ModelType | null;
     setSelectedModel: (model: ModelType) => void;
     setCurrentStep: (step: number) => void;
 };
 
-export default function ModelStep({ selectedBrand, selectedModel, setSelectedModel, setCurrentStep }: ModelStepProps) {
-    const models = selectedBrand.modelIds.map((id) => mockNormalizedFilter.models[id]);
+export default function ModelStep({ selectedBrand, selectedModel, setSelectedModel, setCurrentStep }: Props) {
+    if (!selectedBrand) return null;
 
-    const handleSelect = (model: Model) => {
+    const models = getModelsByBrandId(selectedBrand.id);
+
+    const handleSelect = (model: ModelType) => {
         setSelectedModel(model);
         setCurrentStep(2);
     };
 
     return (
         <div>
-            <h2 className="mb-4 font-bold">انتخاب مدل برای {selectedBrand.title}</h2>
-            <SelectableList<Model>
+            <h2 className="mb-6 font-bold">مدل خودروی خود را مشخص کنید ({selectedBrand.title})</h2>
+            <SelectableList<ModelType>
                 data={models}
                 selectedItemId={selectedModel?.id}
                 onSelect={handleSelect}

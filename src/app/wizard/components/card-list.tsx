@@ -1,4 +1,3 @@
-// app/wizard/components/SelectableList.tsx
 "use client";
 import { Card } from "./card";
 
@@ -20,13 +19,11 @@ export default function SelectableList<T extends { id: string; title: string }>(
     return (
         <ul
             className={`
-        grid gap-4
-        grid-cols-1
+        grid gap-6
         sm:grid-cols-2
         md:grid-cols-3
-        lg:grid-cols-${columns}
+        lg:grid-cols-5
       `}
-            style={{ gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))` }}
         >
             {data.map((item) => (
                 <li
