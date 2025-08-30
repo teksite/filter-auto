@@ -90,7 +90,7 @@ export default function WizardPage() {
     if (selectedBrand && selectedModel && selectedYear && selectedOption && selectedMileage && selectedCity) maxStepEnabled = 6;
     if (selectedBrand && selectedModel && selectedYear && selectedOption && selectedMileage && selectedCity && userName) maxStepEnabled = 7;
     return (
-        <div className="grid gap-3 mg:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 min-h-screen p-8">
+        <div className="grid gap-3 mg:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 min-h-screen p-8 w-3/4 mx-auto">
             <div>
                 <StepsSidebar
                     steps={steps}

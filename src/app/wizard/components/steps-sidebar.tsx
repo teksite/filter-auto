@@ -39,7 +39,7 @@ export default function StepsSidebar({
     ];
 
     return (
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-wrap lg:flex-col gap-3">
             {steps.map((step, index) => {
                 const valueLabel = valueLabels[index] || "";
 
@@ -47,7 +47,7 @@ export default function StepsSidebar({
                 const isEnabled = index <= maxStepEnabled;
 
                 const containerClass = `
-                    p-3 rounded border cursor-pointer text-sm
+                    p-3 rounded border cursor-pointer text-sm w-32 lg:w-full
                     ${isActive ? "bg-orange-600/10 border-orange-600" : ""}
                     ${!isActive && isEnabled ? "bg-green-600/10 border-green-600" : ""}
                     ${!isActive && !isEnabled ? "bg-gray-100 border-gray-200 cursor-not-allowed text-gray-400" : ""}
